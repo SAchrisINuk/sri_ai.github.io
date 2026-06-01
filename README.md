@@ -1,2 +1,540 @@
-# sri_ai.github.io
-How students learns about AI at SRI
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI at SRI - A Guide for Parents</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --sapphire:#0F2643;
+  --topaz:#4396C9;
+  --topaz-soft:#E7F1F8;
+  --topaz-mid:#A9D0E8;
+  --ink:#1c2b3a;
+  --grey:#5b6b7b;
+  --line:#e3e9ef;
+  --bg:#f6f8fa;
+  --white:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.serif{font-family:'DM Serif Display',Georgia,serif;font-weight:400}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Header */
+header{
+  background:var(--white);
+  border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:50;
+}
+.bar{display:flex;align-items:center;gap:14px;padding:16px 0}
+.logo-svg{flex-shrink:0}
+.logo-lockup{display:flex;align-items:center;gap:13px}
+.wordmark{display:flex;flex-direction:column;line-height:1}
+.wm1{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;letter-spacing:3px;color:#15294A}
+.wm2{font-family:'Inter',sans-serif;font-weight:800;font-size:13.5px;letter-spacing:1px;color:#15294A;line-height:1.12;margin-top:3px}
+nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+nav a{font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:8px 11px;border-radius:8px;transition:.15s}
+nav a:hover{color:var(--sapphire);background:var(--topaz-soft)}
+
+/* Hero */
+.hero{
+  background:linear-gradient(160deg,var(--sapphire) 0%,#16365c 100%);
+  color:var(--white);
+  padding:72px 0 84px;
+  position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;right:-120px;top:-80px;width:420px;height:420px;
+  background:radial-gradient(circle,rgba(67,150,201,.35),transparent 65%);
+}
+.hero .wrap{position:relative;z-index:2;max-width:760px}
+.hero-art{position:absolute;right:2%;top:50%;transform:translateY(-50%);z-index:1;opacity:.5;pointer-events:none}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--topaz-mid);font-weight:700;margin-bottom:18px}
+.hero h1{font-family:'DM Serif Display',serif;font-size:clamp(34px,5vw,52px);line-height:1.1;margin-bottom:20px}
+.hero p{font-size:18px;color:#d7e3ef;max-width:620px}
+.hero .star{display:inline-block;color:var(--topaz)}
+
+/* Sections */
+.section{padding:64px 0}
+.section.tight{padding:48px 0}
+.section.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(26px,3.5vw,36px);color:var(--sapphire);margin-bottom:8px}
+.section .lead{font-size:17px;color:var(--grey);max-width:700px;margin-bottom:36px}
+
+/* Reassurance cards */
+.assure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:-44px;position:relative;z-index:5}
+.assure{
+  background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px;
+  box-shadow:0 12px 30px rgba(15,38,67,.08);
+}
+.assure .ic{width:46px;height:46px;border-radius:12px;background:var(--topaz-soft);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.assure h3{font-size:16px;color:var(--sapphire);margin-bottom:6px}
+.assure p{font-size:14px;color:var(--grey)}
+
+/* Journey */
+.journey-track{height:6px;background:linear-gradient(90deg,var(--topaz-soft),var(--topaz));border-radius:6px 6px 0 0}
+.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-radius:0 0 16px 16px;overflow:hidden;border:1px solid var(--line);border-top:none}
+.stage{background:var(--white);padding:24px 18px;border-right:1px solid var(--line);position:relative}
+.stage:last-child{border-right:none}
+.stage .yr{font-family:'DM Serif Display',serif;color:var(--topaz);font-size:20px;margin-bottom:8px}
+.stage .ph{font-size:13px;font-weight:700;color:var(--sapphire);margin-bottom:6px}
+.stage .ds{font-size:13px;color:var(--grey)}
+
+/* Age & supervision gate */
+.gate-label{display:flex;justify-content:flex-end;margin-bottom:8px}
+.gate-label span{background:var(--topaz-soft);color:#1f6fa8;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;display:inline-flex;align-items:center;gap:7px;position:relative}
+.gate-label span::after{content:"";position:absolute;bottom:-7px;right:38px;border:7px solid transparent;border-top-color:var(--topaz-soft);border-bottom:0}
+.gate-track{display:grid;grid-template-columns:repeat(10,1fr);height:88px;position:relative;gap:0}
+.zone{display:flex;flex-direction:column;justify-content:center;padding:0 20px;color:#fff;position:relative}
+.zone.early{grid-column:1 / 9;background:linear-gradient(135deg,#1a3d68,#0F2643);border-radius:14px 0 0 14px}
+.zone.senior{grid-column:9 / 11;background:linear-gradient(135deg,#4396C9,#2f7fb5);border-radius:0 14px 14px 0}
+.zone .zt{font-weight:700;font-size:15px;line-height:1.2}
+.zone .zs{font-size:12px;opacity:.88;margin-top:3px}
+.zone.senior .zt,.zone.senior .zs{text-align:right}
+.gate-divider{position:absolute;left:80%;top:-6px;bottom:-6px;width:0;border-left:2px dashed rgba(255,255,255,.6);z-index:3}
+.gate-lock{position:absolute;left:80%;top:50%;transform:translate(-50%,-50%);width:36px;height:36px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:4;box-shadow:0 4px 12px rgba(15,38,67,.25)}
+.gate-ticks{display:grid;grid-template-columns:repeat(10,1fr);margin-top:10px}
+.gate-ticks span{font-size:11px;color:var(--grey);text-align:center;font-weight:600}
+.gate-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.gate-card{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--white)}
+.gate-card.early{border-top:4px solid var(--sapphire)}
+.gate-card.senior{border-top:4px solid var(--topaz)}
+.gate-card h4{font-size:15px;color:var(--sapphire);margin-bottom:10px}
+.gate-card ul{list-style:none}
+.gate-card li{font-size:13px;color:var(--grey);padding:5px 0 5px 22px;position:relative}
+.gate-card li::before{content:"\2713";position:absolute;left:0;color:var(--topaz);font-weight:700}
+
+/* Year selector */
+.selector-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:32px;box-shadow:0 12px 30px rgba(15,38,67,.06)}
+.yr-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px}
+.yr-btn{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;border:1.5px solid var(--line);background:var(--white);color:var(--sapphire);padding:10px 16px;border-radius:10px;cursor:pointer;transition:.15s}
+.yr-btn:hover{border-color:var(--topaz);background:var(--topaz-soft)}
+.yr-btn.active{background:var(--sapphire);border-color:var(--sapphire);color:var(--white)}
+.result{margin-top:28px}
+.result-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.result-head .yr-name{font-family:'DM Serif Display',serif;font-size:26px;color:var(--sapphire)}
+.result-head .count{font-size:14px;color:var(--topaz);font-weight:600}
+.result-sub{font-size:15px;color:var(--grey);margin-bottom:24px}
+.theme-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.theme-row{display:flex;gap:14px;align-items:flex-start;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--white)}
+.theme-row .ic{flex-shrink:0;width:40px;height:40px;border-radius:10px;background:var(--topaz-soft);display:flex;align-items:center;justify-content:center}
+.theme-row h4{font-size:14px;color:var(--sapphire);margin-bottom:4px;line-height:1.3}
+.theme-row p{font-size:13px;color:var(--grey);margin-bottom:8px}
+.terms{display:flex;gap:6px;flex-wrap:wrap}
+.term{font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;color:var(--white)}
+.term.t1{background:#1f6fa8}
+.term.t2{background:#4396C9}
+.term.t3{background:#7bbbdf}
+.empty-note{font-size:14px;color:var(--grey);background:var(--topaz-soft);border-radius:12px;padding:18px;margin-top:20px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--grey);margin-top:22px;align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend .dot{width:12px;height:12px;border-radius:50%}
+
+/* Coverage heatmap */
+.heat-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--white);padding:18px}
+.heat{border-collapse:separate;border-spacing:5px;min-width:720px;width:100%}
+.heat th.corner{background:none}
+.heat th{font-size:11px;color:var(--grey);font-weight:600;text-align:center;vertical-align:bottom;padding:4px 2px}
+.heat th .hi{display:block;margin:0 auto 6px;width:24px;height:24px;border-radius:7px;background:var(--topaz-soft);display:flex;align-items:center;justify-content:center}
+.heat td.yr{text-align:left;font-weight:600;color:var(--sapphire);font-size:13px;white-space:nowrap;padding-right:8px}
+.cell{height:40px;border-radius:8px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.5px}
+.c0{background:#f0f3f6;color:#cdd6df}
+.c1{background:#d3e7f4;color:#1f6fa8}
+.c2{background:#7bbbdf;color:#fff}
+.c3{background:#2f7fb5;color:#fff}
+.heat-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--grey);margin-top:18px;align-items:center}
+.heat-legend span{display:inline-flex;align-items:center;gap:7px}
+.heat-legend .sw{width:22px;height:16px;border-radius:5px}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
+.skill{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px;transition:.18s}
+.skill:hover{box-shadow:0 10px 26px rgba(15,38,67,.08);transform:translateY(-2px)}
+.skill .top{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.skill .ic{width:48px;height:48px;border-radius:12px;background:var(--sapphire);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.skill h3{font-size:16px;color:var(--sapphire);line-height:1.25}
+.skill .what{font-size:14px;color:var(--ink);margin-bottom:12px}
+.skill .eg-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--topaz);margin-bottom:5px}
+.skill .eg{font-size:13px;color:var(--grey)}
+
+/* Tools / safety */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px}
+.panel.dark{background:var(--sapphire);color:var(--white);border:none}
+.panel h3{font-family:'DM Serif Display',serif;font-size:22px;margin-bottom:16px}
+.panel.dark h3{color:var(--white)}
+.panel ul{list-style:none}
+.panel li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;display:flex;gap:10px;align-items:flex-start}
+.panel.dark li{border-color:rgba(255,255,255,.14);color:#d7e3ef}
+.panel li:last-child{border-bottom:none}
+.tick{color:var(--topaz);flex-shrink:0;font-weight:700;margin-top:1px}
+
+/* FAQ */
+.faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.faq-q{padding:18px 22px;font-weight:600;color:var(--sapphire);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15px;list-style:none}
+.faq-q::-webkit-details-marker{display:none}
+.faq-item[open] .faq-q{border-bottom:1px solid var(--line)}
+.faq-a{padding:16px 22px;font-size:14px;color:var(--grey)}
+.chev{color:var(--topaz);transition:.2s;font-size:20px;line-height:1}
+.faq-item[open] .chev{transform:rotate(45deg)}
+
+/* Footer */
+footer{background:var(--sapphire);color:#aebfd0;padding:44px 0;font-size:13px;text-align:center}
+footer .serif{color:var(--white);font-size:18px;display:block;margin-bottom:8px}
+
+@media(max-width:760px){
+  .journey{grid-template-columns:1fr 1fr}
+  .stage{border-bottom:1px solid var(--line)}
+  .split{grid-template-columns:1fr}
+  .gate-cards{grid-template-columns:1fr}
+  .hero-art{display:none}
+  nav{display:none}
+  .zone{padding:0 12px}
+  .zone .zt{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <span class="logo-lockup">
+      <svg class="logo-svg" width="56" height="56" viewBox="0 0 120 120" aria-hidden="true">
+        <ellipse cx="60" cy="60" rx="24" ry="50" fill="none" stroke="#15294A" stroke-width="9"/>
+        <ellipse cx="60" cy="60" rx="50" ry="24" fill="none" stroke="#15294A" stroke-width="9"/>
+        <path d="M74 47 Q76.5 59.5 89 62 Q76.5 64.5 74 77 Q71.5 64.5 59 62 Q71.5 59.5 74 47 Z" fill="#4396C9"/>
+      </svg>
+      <span class="wordmark">
+        <span class="wm1">GEMS</span>
+        <span class="wm2">SCHOOL OF RESEARCH<br>&amp; INNOVATION</span>
+      </span>
+    </span>
+    <nav>
+      <a href="#know">What to know</a>
+      <a href="#journey">The journey</a>
+      <a href="#ages">By age</a>
+      <a href="#year">Your child's year</a>
+      <a href="#picture">Full picture</a>
+      <a href="#skills">The skills</a>
+      <a href="#faq">Questions</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">A guide for SRI parents</span>
+    <h1>How your child learns about AI at SRI <span class="star">&#9670;</span></h1>
+    <p>Artificial intelligence is part of your child's world. We teach it in an age-appropriate, carefully supervised way so pupils grow into safe, confident and thoughtful users. Here is exactly what that looks like, year by year.</p>
+  </div>
+</section>
+
+<section class="section" id="know">
+  <div class="wrap">
+    <div class="assure-grid">
+      <div class="assure">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4396C9" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+        <h3>Age-appropriate by design</h3>
+        <p>Pupils under 13 never independently prompt open AI tools. Younger children explore AI through play and structured tasks.</p>
+      </div>
+      <div class="assure">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4396C9" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>Always teacher-led</h3>
+        <p>Children meet AI through weekly Computing and Trailblazer Technology lessons, guided by their teachers at every step.</p>
+      </div>
+      <div class="assure">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4396C9" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Guard-railed tools only</h3>
+        <p>We use approved, school-managed platforms such as Umety, Canva and managed Copilot. No open, unsupervised access.</p>
+      </div>
+      <div class="assure">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4396C9" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></div>
+        <h3>Safety and ethics first</h3>
+        <p>Pupils learn to protect their data, check accuracy, spot bias and question what AI tells them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight" id="journey">
+  <div class="wrap">
+    <h2>The learning journey</h2>
+    <p class="lead">AI learning grows gradually with your child. It begins with the foundations of clear thinking and ends, in the senior years, with supervised use of generative AI tools.</p>
+    <div class="journey-track"></div>
+    <div class="journey">
+      <div class="stage"><div class="yr">FS1 &amp; FS2</div><div class="ph">First steps</div><div class="ds">Patterns, sequencing and simple robots through hands-on play.</div></div>
+      <div class="stage"><div class="yr">Years 1&ndash;2</div><div class="ph">Building blocks</div><div class="ds">Instructions, coding basics and how machines recognise things.</div></div>
+      <div class="stage"><div class="yr">Years 3&ndash;4</div><div class="ph">Making sense of AI</div><div class="ds">Data, robotics, decision-making and first immersive activities.</div></div>
+      <div class="stage"><div class="yr">Years 5&ndash;6</div><div class="ph">Creating with AI</div><div class="ds">Programming, creative tools and the first lessons in using AI responsibly.</div></div>
+      <div class="stage"><div class="yr">Years 7&ndash;8</div><div class="ph">Confident &amp; critical</div><div class="ds">Supervised generative AI, creative work and serious critical evaluation.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="ages">
+  <div class="wrap">
+    <h2>The age and supervision model</h2>
+    <p class="lead">The most important thing to understand is when and how AI tools are used. Generative AI (the kind that writes or creates) is only used from Year 7, with supervision, in line with the rule that it is for pupils aged 13 and over.</p>
+
+    <div class="gate-label"><span>&#128274; Age 13 / Year 7: supervised generative AI begins here</span></div>
+    <div class="gate-track">
+      <div class="zone early">
+        <div class="zt">FS1 to Year 6</div>
+        <div class="zs">Foundations and teacher-led learning. No independent use of open AI.</div>
+      </div>
+      <div class="zone senior">
+        <div class="zt">Years 7&ndash;8</div>
+        <div class="zs">Supervised generative AI</div>
+      </div>
+      <div class="gate-divider"></div>
+      <div class="gate-lock">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0F2643" stroke-width="2.2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+      </div>
+    </div>
+    <div class="gate-ticks">
+      <span>FS1</span><span>FS2</span><span>Y1</span><span>Y2</span><span>Y3</span><span>Y4</span><span>Y5</span><span>Y6</span><span>Y7</span><span>Y8</span>
+    </div>
+
+    <div class="gate-cards">
+      <div class="gate-card early">
+        <h4>Before age 13 (FS1 to Year 6)</h4>
+        <ul>
+          <li>Learning is led and designed entirely by teachers</li>
+          <li>AI is explored through play, robots and structured tasks</li>
+          <li>Children do not independently prompt open AI tools</li>
+          <li>Only safe, guard-railed platforms are used</li>
+        </ul>
+      </div>
+      <div class="gate-card senior">
+        <h4>From age 13 (Years 7 and 8)</h4>
+        <ul>
+          <li>Generative AI is introduced with close supervision</li>
+          <li>Pupils use teacher-designed prompts and closed tasks</li>
+          <li>The focus is safe, ethical and critical use</li>
+          <li>Approved tools only, on school-managed devices</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="year">
+  <div class="wrap">
+    <h2>What does my child cover?</h2>
+    <p class="lead">Choose your child's year group to see exactly which AI themes they explore and in which term.</p>
+    <div class="selector-card">
+      <div class="yr-buttons" id="yrButtons"></div>
+      <div class="result" id="result"></div>
+      <div class="legend">
+        <span><span class="dot" style="background:#1f6fa8"></span>Term 1 (Autumn)</span>
+        <span><span class="dot" style="background:#4396C9"></span>Term 2 (Spring)</span>
+        <span><span class="dot" style="background:#7bbbdf"></span>Term 3 (Summer)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight alt" id="picture">
+  <div class="wrap">
+    <h2>The full picture</h2>
+    <p class="lead">This map shows every year group and every AI theme at a glance. The darker the square, the more terms that theme is taught in. You can see how AI learning steadily broadens and deepens as children move up the school.</p>
+    <div class="heat-scroll">
+      <table class="heat" id="heatTable"></table>
+    </div>
+    <div class="heat-legend">
+      <strong style="color:var(--sapphire);font-size:13px">Terms taught:</strong>
+      <span><span class="sw c0"></span>Not yet</span>
+      <span><span class="sw c1"></span>1 term</span>
+      <span><span class="sw c2"></span>2 terms</span>
+      <span><span class="sw c3"></span>3 terms</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="skills">
+  <div class="wrap">
+    <h2>The nine skills, in plain English</h2>
+    <p class="lead">Every theme builds towards pupils who understand AI, can use it sensibly and know its limits. Here is what each one means and what you might recognise at home.</p>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <div class="split">
+      <div class="panel dark">
+        <h3>Tools your child may use</h3>
+        <ul>
+          <li><span class="tick">&#9670;</span><span><strong style="color:#fff">School-managed Copilot</strong> &mdash; on managed devices, with AI features available to pupils aged 13 and over.</span></li>
+          <li><span class="tick">&#9670;</span><span><strong style="color:#fff">Canva</strong> &mdash; for guided, AI-assisted design and presentation work.</span></li>
+          <li><span class="tick">&#9670;</span><span><strong style="color:#fff">Umety</strong> &mdash; safe, immersive and simulated environments to explore AI-linked systems.</span></li>
+          <li><span class="tick">&#9670;</span><span><strong style="color:#fff">Classroom robotics &amp; drones</strong> &mdash; Bee-Bots, robotics kits, humanoid robots and robotic arms.</span></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>How we keep it safe</h3>
+        <ul>
+          <li><span class="tick">&#10003;</span><span>Under-13s do not independently prompt open generative AI tools.</span></li>
+          <li><span class="tick">&#10003;</span><span>All AI activity is teacher-designed and supervised.</span></li>
+          <li><span class="tick">&#10003;</span><span>Pupils are taught never to share personal data with AI.</span></li>
+          <li><span class="tick">&#10003;</span><span>Lessons build the habit of checking accuracy and spotting bias.</span></li>
+          <li><span class="tick">&#10003;</span><span>AI is used to support pupils' thinking, never to replace it.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tight" id="faq">
+  <div class="wrap">
+    <h2>Your questions answered</h2>
+    <div style="margin-top:30px">
+      <details class="faq-item">
+        <summary class="faq-q">Will my child be left to use AI on their own?<span class="chev">+</span></summary>
+        <div class="faq-a">No. All AI learning is led by teachers through structured lessons. Pupils under 13 do not independently use open AI tools. Younger children experience AI through play, guided tasks and safe, guard-railed platforms.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">My child is in the early years. Are they really "doing AI"?<span class="chev">+</span></summary>
+        <div class="faq-a">Not in the way adults use AI. In FS1 to Year 2, children build the thinking that AI depends on: spotting patterns, putting steps in order and giving simple instructions to robots like Bee-Bots. It is playful, hands-on and screen-light.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">When does generative AI (like chatbots) come in?<span class="chev">+</span></summary>
+        <div class="faq-a">Generative AI awareness and guard-railed prompting begins in Year 7 and continues in Year 8, in line with the requirement that open generative AI is for pupils aged 13 and over. Even then, it is supervised, with teacher-designed prompts and closed tasks.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Is my child's personal data safe?<span class="chev">+</span></summary>
+        <div class="faq-a">Yes. We use school-managed, approved tools and teach pupils from an early age never to share personal information with AI. Protecting data is a core part of our responsible AI lessons.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How do I talk to my child about AI at home?<span class="chev">+</span></summary>
+        <div class="faq-a">Ask them what they made or programmed this week, and encourage the same questions we use in class: Where did this information come from? Is it accurate? Could it be biased? Curiosity and healthy scepticism are exactly what we are building.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="serif">GEMS School of Research &amp; Innovation</span>
+    Preparing pupils to use AI safely, creatively and responsibly.<br>
+    For questions about our AI curriculum, please contact your child's class teacher or the school office.
+  </div>
+</footer>
+
+<script>
+const skills = [
+  {id:'foundations', name:'AI readiness foundations', short:'Foundations', what:'The thinking skills children need before they can understand AI properly.', eg:'Spotting patterns, putting steps in order, breaking problems into smaller parts, making predictions and finding and fixing mistakes.', icon:'<path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="#fff" stroke-width="2"/>'},
+  {id:'data', name:'Data and sensors for AI', short:'Data', what:'Understanding that AI systems rely on data, examples and patterns.', eg:'Sorting information, reading pictograms and graphs, and using live sensor, weather and performance data.', icon:'<path d="M4 19V9M10 19V5M16 19v-7M22 19H2" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>'},
+  {id:'machine', name:'Machine instructions and automation', short:'Instructions', what:'Learning that machines need precise instructions and can repeat tasks.', eg:'Bee-Bots, Scratch, block coding, drone sequences, beginning Python and Micro:bit, loops and programmed movement.', icon:'<path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/>'},
+  {id:'robotics', name:'Robotics, drones and intelligent systems', short:'Robotics', what:'Exploring machines that move, sense, respond or complete tasks on their own.', eg:'Classroom robots, Bee-Bots, drones, robotics kits, humanoid robots and robotic arm systems.', icon:'<rect x="6" y="9" width="12" height="9" rx="2" fill="none" stroke="#fff" stroke-width="2"/><path d="M12 9V5M9 14h.01M15 14h.01M9 5h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/>'},
+  {id:'recognition', name:'AI recognition and decision-making', short:'Recognition', what:'Learning that some systems can recognise inputs and respond to patterns.', eg:'Face and speech recognition, object detection, lane following, obstacle avoidance and self-navigating systems.', icon:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="none" stroke="#fff" stroke-width="2"/>'},
+  {id:'immersive', name:'Immersive and simulated AI contexts', short:'Immersive', what:'Using virtual or simulated worlds to explore AI-linked systems safely.', eg:'Umety, virtual and augmented reality, self-driving simulations and virtual design spaces.', icon:'<path d="M3 9a2 2 0 012-2h14a2 2 0 012 2v5a2 2 0 01-2 2h-4l-3 3-3-3H5a2 2 0 01-2-2z" fill="none" stroke="#fff" stroke-width="2"/>'},
+  {id:'generative', name:'Generative AI awareness and guard-railed prompting', short:'Generative', what:'Understanding that AI tools can generate ideas, but only through supervised tasks.', eg:'Teacher-designed prompts, guided Copilot or Canva activities and closed, supervised AI exploration.', icon:'<path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>'},
+  {id:'creative', name:'AI-supported creative work', short:'Creative', what:'Using approved tools to support design, presentation and media creation.', eg:'Canva-supported design, AI-assisted presentations and guided image and design exploration.', icon:'<path d="M3 21l3-1 11-11-2-2L4 18zM15 5l4 4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'},
+  {id:'responsible', name:'Responsible AI and critical evaluation', short:'Responsible', what:'Learning how to use AI safely, ethically and intelligently.', eg:'Protecting personal data, checking accuracy, spotting bias and fake news, and using AI to support thinking rather than replace it.', icon:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" fill="none" stroke="#fff" stroke-width="2"/><path d="M9 12l2 2 4-4" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>'}
+];
+
+const curriculum = {
+  'FS1':   {foundations:[1,2], data:[3], machine:[1,2], robotics:[2]},
+  'FS2':   {foundations:[1,2], data:[3], machine:[1,2], robotics:[2]},
+  'Year 1':{foundations:[1], data:[2], machine:[1,3], robotics:[1]},
+  'Year 2':{foundations:[1], data:[3], machine:[1,3], robotics:[2], recognition:[2]},
+  'Year 3':{foundations:[1,2], data:[1,3], machine:[1,2], robotics:[1,2], recognition:[1,2], immersive:[1]},
+  'Year 4':{foundations:[1,2], data:[1,3], machine:[2], robotics:[2], recognition:[2], immersive:[2]},
+  'Year 5':{foundations:[1,2,3], data:[2], machine:[1,2,3], robotics:[1,2], recognition:[2], immersive:[1,2], creative:[3], responsible:[3]},
+  'Year 6':{foundations:[1,2], data:[2,3], machine:[2,3], robotics:[3], recognition:[3], immersive:[3], creative:[3], responsible:[3]},
+  'Year 7':{foundations:[1], data:[2,3], machine:[1,2,3], robotics:[1,2,3], recognition:[2,3], immersive:[1,2,3], generative:[2,3], creative:[2,3], responsible:[2,3]},
+  'Year 8':{foundations:[1], data:[2,3], machine:[1,2,3], robotics:[1,2,3], recognition:[2,3], immersive:[2,3], generative:[2,3], creative:[2,3], responsible:[2,3]}
+};
+
+const skillMap = {};
+skills.forEach(s => skillMap[s.id] = s);
+
+/* Skill cards */
+document.getElementById('skillsGrid').innerHTML = skills.map(s => `
+  <div class="skill">
+    <div class="top">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24">${s.icon}</svg></div>
+      <h3>${s.name}</h3>
+    </div>
+    <p class="what">${s.what}</p>
+    <div class="eg-label">What you might recognise</div>
+    <p class="eg">${s.eg}</p>
+  </div>`).join('');
+
+/* Year selector */
+const years = Object.keys(curriculum);
+const btnWrap = document.getElementById('yrButtons');
+years.forEach((yr, i) => {
+  const b = document.createElement('button');
+  b.className = 'yr-btn' + (i===0?' active':'');
+  b.textContent = yr;
+  b.onclick = () => { document.querySelectorAll('.yr-btn').forEach(x=>x.classList.remove('active')); b.classList.add('active'); render(yr); };
+  btnWrap.appendChild(b);
+});
+
+function render(yr){
+  const data = curriculum[yr];
+  const entries = Object.entries(data);
+  const rows = entries.map(([id, terms]) => {
+    const s = skillMap[id];
+    const termBadges = terms.map(t => `<span class="term t${t}">Term ${t}</span>`).join('');
+    return `
+      <div class="theme-row">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24">${s.icon.replace(/#fff/g,'#4396C9')}</svg></div>
+        <div>
+          <h4>${s.name}</h4>
+          <p>${s.what}</p>
+          <div class="terms">${termBadges}</div>
+        </div>
+      </div>`;
+  }).join('');
+  const hasGen = data.generative ? '' : `<div class="empty-note"><strong>A note on chatbots and generative AI:</strong> this is introduced from Year 7 only, in line with the rule that open generative AI is for pupils aged 13 and over. In ${yr}, your child builds the foundations that make later AI use safe and confident.</div>`;
+  document.getElementById('result').innerHTML = `
+    <div class="result-head">
+      <span class="yr-name">${yr}</span>
+      <span class="count">${entries.length} AI theme${entries.length===1?'':'s'} this year</span>
+    </div>
+    <p class="result-sub">Here is what your child explores, and in which term.</p>
+    <div class="theme-list">${rows}</div>
+    ${hasGen}`;
+}
+render('FS1');
+
+/* Coverage heatmap */
+function buildHeat(){
+  let head = '<tr><th class="corner"></th>';
+  skills.forEach(s => {
+    head += `<th><span class="hi"><svg width="15" height="15" viewBox="0 0 24 24">${s.icon.replace(/#fff/g,'#4396C9')}</svg></span>${s.short}</th>`;
+  });
+  head += '</tr>';
+
+  let body = '';
+  years.forEach(yr => {
+    body += `<tr><td class="yr">${yr}</td>`;
+    skills.forEach(s => {
+      const terms = curriculum[yr][s.id];
+      const count = terms ? terms.length : 0;
+      const label = terms ? terms.map(t=>'T'+t).join(' ') : '';
+      const title = terms ? `${yr}: ${s.name} taught in ${terms.map(t=>'Term '+t).join(', ')}` : `${yr}: ${s.name} not taught`;
+      body += `<td class="cell c${count}" title="${title}">${label}</td>`;
+    });
+    body += '</tr>';
+  });
+  document.getElementById('heatTable').innerHTML = head + body;
+}
+buildHeat();
+</script>
+
+</body>
+</html>
